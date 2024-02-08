@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#game-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#info {
+    margin-bottom: 20px;
+}
+
+#attack-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
