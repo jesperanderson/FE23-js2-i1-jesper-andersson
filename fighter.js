@@ -1,17 +1,17 @@
 class Fighter {
-    #name;
-    #maxHealth;
-    #health;
-
     constructor(name, maxHealth) {
-        
-        this.#name = name;
-        this.#maxHealth = maxHealth;
-        this.#health = maxHealth;
+        this.name = name;
+        this.maxHealth = maxHealth;
+        this.health = maxHealth;
+        this.points = 0;
     }
 
-    attack(other) {
-        throw new Error("Subclasses must implement attack method");
+    basicAttack(other) {
+        throw new Error("Subclasses must implement basicAttack method");
+    }
+
+    specialAttack(other) {
+        throw new Error("Subclasses must implement specialAttack method");
     }
 
     isKnockedOut() {
@@ -24,8 +24,14 @@ class Warrior extends Fighter {
         super(name, 100);
     }
 
-    attack(other) {
+    basicAttack(other) {
         const damage = Math.floor(Math.random() * 11) + 10; // Random damage between 10 and 20
+        other.health -= damage;
+        return damage;
+    }
+
+    specialAttack(other) {
+        const damage = Math.floor(Math.random() * 21) + 20; // Random damage between 20 and 40
         other.health -= damage;
         return damage;
     }
@@ -36,8 +42,14 @@ class Mage extends Fighter {
         super(name, 80);
     }
 
-    attack(other) {
+    basicAttack(other) {
         const damage = Math.floor(Math.random() * 11) + 15; // Random damage between 15 and 25
+        other.health -= damage;
+        return damage;
+    }
+
+    specialAttack(other) {
+        const damage = Math.floor(Math.random() * 21) + 25; // Random damage between 25 and 45
         other.health -= damage;
         return damage;
     }

@@ -2,17 +2,24 @@ body {
     font-family: Arial, sans-serif;
 }
 
-#game-container {
+#fighter-selection, #game-container {
     text-align: center;
     margin-top: 50px;
 }
 
-#info {
-    margin-bottom: 20px;
+#fighter-selection input[type="radio"], #game-container select {
+    margin-right: 10px;
 }
 
-#attack-btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+#game-container {
+    display: none;
+}
+
+#player1-info, #player2-info {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+#player1-info, #player2-info > div {
+    margin-bottom: 10px;
 }
