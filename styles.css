@@ -1,25 +1,26 @@
 body {
     font-family: Arial, sans-serif;
-}
-
-#fighter-selection, #game-container {
+    background-color: #f0f0f0;
+    color: #333;
     text-align: center;
-    margin-top: 50px;
 }
 
-#fighter-selection input[type="radio"], #game-container select {
-    margin-right: 10px;
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-#game-container {
-    display: none;
+button:hover {
+    background-color: #555;
 }
 
-#player1-info, #player2-info {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-#player1-info, #player2-info > div {
-    margin-bottom: 10px;
+#restart-btn {
+    background-color: #ff0000;
 }
