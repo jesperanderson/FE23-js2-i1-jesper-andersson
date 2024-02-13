@@ -68,10 +68,19 @@ document.addEventListener("DOMContentLoaded", function() {
             if (otherPlayer.isKnockedOut()) {
                 info.textContent = `${otherPlayer.name} is knocked out!`;
                 attackBtn.disabled = true;
-            } else {
-                currentPlayer = currentPlayer === player1 ? player2 : player1;
-                info.textContent = `${currentPlayer.name}'s turn`;
-            }
+                            // Visa vinnarmeddelande och fråga om att starta om spelet
+                            setTimeout(function() {
+                                const winner = player1.isKnockedOut() ? player2 : player1;
+                                alert(`${winner.name} wins the game!`);
+                                const restartGame = confirm("Do you want to restart the game?");
+                                if (restartGame) {
+                                    location.reload(); // Ladda om sidan för att starta om spelet
+                                }
+                            }, 500); // Fördröj för att låta spelarna se slutmeddelandet innan dialogrutan visas
+                        } else {
+                            currentPlayer = currentPlayer === player1 ? player2 : player1;
+                            info.textContent = `${currentPlayer.name}'s turn`;
+                        }
 
             // Update player info
             player1HealthElem.textContent = player1.health;
