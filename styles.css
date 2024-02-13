@@ -11,15 +11,33 @@ body {
     margin-right: 10px;
 }
 
+/* Lägg till CSS för player-container */
+.player-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px; /* Lägger till lite marginal mellan spelarna */
+}
+
 #game-container {
     display: none;
+    background-color: teal;
+    color: white;
+    padding: 20px;
+    display: flex; /* Använd flexbox */
+    flex-direction: row; /* Placera spelarna bredvid varandra */
+    justify-content: space-around; /* Centrera spelarna horisontellt */
+    align-items: center; /* Centrera spelarna vertikalt */
 }
 
 #player1-info, #player2-info {
-    display: inline-block;
-    margin-right: 20px;
+    background-color: blue; /* Bakgrundsfärg för player-info */
+    color: white; /* Textfärg för player-info */
+    width: 200px; /* Bredden på varje player-info */
+    height: 200px; /* Höjden på varje player-info */
+    border-radius: 50%; /* Runda hörn för player-info */
+    padding: 20px; /* Inre utfyllnad för att centrera texten */
 }
-
-#player1-info, #player2-info > div {
-    margin-bottom: 10px;
+#player2-info {
+    background-color: red; /* Bakgrundsfärg för player2-info */
 }

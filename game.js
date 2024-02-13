@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function createFighter(type, name) {
         if (type === "Warrior") {
-            return new Warrior(name);
+            return new Warrior(name, "warrior");
         } else if (type === "Mage") {
-            return new Mage(name);
+            return new Mage(name, "mage");
         } else {
             throw new Error("Invalid fighter type");
         }
