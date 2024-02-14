@@ -6,6 +6,32 @@ body {
     margin-top: 50px;
 }
 
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
 #fighter-selection input[type="radio"], #game-container select {
     margin-right: 10px;
 }
@@ -14,11 +40,73 @@ body {
     display: none;
 }
 
-#player1-info, #player2-info {
-    display: inline-block;
-    margin-right: 20px;
+.player-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border-top: 2px solid #ccc;
+    padding-top: 20px;
 }
 
-#player1-info, #player2-info > div {
+.player-info {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.player-info h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+    color: #007bff;
+}
+
+.player-stats {
     margin-bottom: 10px;
+}
+
+.player-stats span {
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 1.1em;
+}
+
+.player-damage {
+    margin-top: 10px;
+}
+
+.health-symbol {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: green;
+    border: 1px solid #333;
+    margin: 0 2px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.damage-symbol {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border: 1px solid #333;
+    margin: 0 2px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.info {
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 1.1em;
+    color: #888;
+}
+
+.btn-container {
+    margin-top: 20px;
 }

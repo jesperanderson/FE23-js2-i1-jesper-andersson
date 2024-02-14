@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function createFighter(type, name) {
         if (type === "Warrior") {
-            return new Warrior(name, "warrior");
+            return new Warrior(name);
         } else if (type === "Mage") {
-            return new Mage(name, "mage");
+            return new Mage(name);
         } else {
             throw new Error("Invalid fighter type");
         }
@@ -34,19 +34,22 @@ document.addEventListener("DOMContentLoaded", function() {
         const player1HealthElem = document.getElementById("player1-health");
         const player1PointsElem = document.getElementById("player1-points");
         const player1AttackSelect = document.getElementById("player1-attack");
+        const player1DamageElem = document.getElementById("player1-damage");
 
         const player2NameElem = document.getElementById("player2-name");
         const player2HealthElem = document.getElementById("player2-health");
         const player2PointsElem = document.getElementById("player2-points");
         const player2AttackSelect = document.getElementById("player2-attack");
+        const player2DamageElem = document.getElementById("player2-damage");
 
         player1NameElem.textContent = player1.name;
-        player1HealthElem.textContent = player1.health;
         player1PointsElem.textContent = player1.points;
 
         player2NameElem.textContent = player2.name;
-        player2HealthElem.textContent = player2.health;
         player2PointsElem.textContent = player2.points;
+
+        updateHealth(player1HealthElem, player1.health);
+        updateHealth(player2HealthElem, player2.health);
 
         const info = document.getElementById("info");
         const attackBtn = document.getElementById("attack-btn");
@@ -65,30 +68,41 @@ document.addEventListener("DOMContentLoaded", function() {
 
             info.textContent = `${currentPlayer.name} attacks ${otherPlayer.name} for ${damage} damage.`;
 
+            // Update health
+            otherPlayer.health -= damage;
+            updateHealth(currentPlayer === player1 ? player2HealthElem : player1HealthElem, otherPlayer.health);
+
             if (otherPlayer.isKnockedOut()) {
                 info.textContent = `${otherPlayer.name} is knocked out!`;
                 attackBtn.disabled = true;
-                            // Visa vinnarmeddelande och fråga om att starta om spelet
-                            setTimeout(function() {
-                                const winner = player1.isKnockedOut() ? player2 : player1;
-                                alert(`${winner.name} wins the game!`);
-                                const restartGame = confirm("Do you want to restart the game?");
-                                if (restartGame) {
-                                    location.reload(); // Ladda om sidan för att starta om spelet
-                                }
-                            }, 500); // Fördröj för att låta spelarna se slutmeddelandet innan dialogrutan visas
-                        } else {
-                            currentPlayer = currentPlayer === player1 ? player2 : player1;
-                            info.textContent = `${currentPlayer.name}'s turn`;
-                        }
+                setTimeout(function() {
+                    const winner = player1.isKnockedOut() ? player2 : player1;
+                    alert(`${winner.name} wins the game!`);
+                    const restartGame = confirm("Do you want to restart the game?");
+                    if (restartGame) {
+                        location.reload(); // Reload the page to restart the game
+                    }
+                }, 500);
+            } else {
+                currentPlayer = currentPlayer === player1 ? player2 : player1;
+                info.textContent = `${currentPlayer.name}'s turn`;
+            }
 
-            // Update player info
-            player1HealthElem.textContent = player1.health;
-            player2HealthElem.textContent = player2.health;
+            // Update player points
             player1PointsElem.textContent = player1.points;
             player2PointsElem.textContent = player2.points;
         });
 
         info.textContent = `${player1.name}'s turn`;
+    }
+
+    // Function to update health symbols
+    function updateHealth(element, health) {
+        element.innerHTML = ''; // Clear previous health symbols
+        for (let i = 0; i < health; i++) {
+            const healthSymbol = document.createElement('div');
+            healthSymbol.classList.add('health-symbol');
+            element.appendChild(healthSymbol);
+        }
     }
 });
